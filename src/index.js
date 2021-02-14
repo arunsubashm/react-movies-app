@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Home from './screen/home/Home';
+import './common/common.css';
+import Controller from './screen/Controller';
 import 'typeface-roboto';
 import reportWebVitals from './reportWebVitals';
 
-ReactDOM.render(<Home />, document.getElementById('root'));
+ReactDOM.render(<Controller />, document.getElementById('root'));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
