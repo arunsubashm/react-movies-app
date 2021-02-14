@@ -179,16 +179,33 @@ class Header extends Component {
         this.setState({ value });
     }
 
+    logoutHandler = (e) => {
+        sessionStorage.removeItem("uuid");
+        sessionStorage.removeItem("access-token");
+
+        this.setState({
+            loggedIn: false
+        });
+    }
+
     render() {
         return (
             <div>
                 <header className="app-header">
                     <img src={logo} className="app-logo" alt="Movies App Logo" />
-                    <div className="login-button">
-                        <Button variant="contained" color="default" onClick={this.openModalHandler}>
-                            Login
-                        </Button>
-                    </div>
+                    {!this.state.loggedIn ?
+                        <div className="login-button">
+                            <Button variant="contained" color="default" onClick={this.openModalHandler}>
+                                Login
+                            </Button>
+                        </div>
+                        :
+                        <div className="login-button">
+                            <Button variant="contained" color="default" onClick={this.logoutHandler}>
+                                Logout
+                            </Button>
+                        </div>
+                    }
                     {this.props.showBookShowButton === "true" ?
                         <div className="bookshow-button">
                             <Link to={"/bookshow/" + this.props.id}>
